@@ -11,6 +11,11 @@ export class App extends Component {
     bad: 0,
   };
 
+  countFeedback = event => {
+    const currentBtn = event.target.name;
+    this.setState(prevState => ({ [currentBtn]: prevState[currentBtn] + 1 }));
+  };
+
   countTotalFeedback() {
     return this.state.good + this.state.neutral + this.state.bad;
   }
@@ -25,6 +30,7 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const totalValue = this.countTotalFeedback();
+
     return (
       <>
         <Section title="Please leave feedback">
